@@ -1,0 +1,19 @@
+CREATE DATABASE tracker_db;
+
+USE tracker_db;
+
+CREATE TABLE department (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE role (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(30) NOT NULL,
+  salary DECIMAL(6,4),
+  department INT,
+  FOREIGN KEY (department)
+  REFERENCES department(id)
+  ON DELETE SET NULL
+);
