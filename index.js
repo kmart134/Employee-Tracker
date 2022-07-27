@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const logo = require("asciiart-logo");
-// const config = require("./package.json");
 const db = require("./db");
+const cTable = require("console.table");
 
 
 
@@ -11,9 +11,10 @@ const db = require("./db");
 //begin function with inquire prompts
 function init (){
 
-    //make consolse banner with asciiart
+    //make console message with asciiart
     const logoMessage = logo({name: "Employee Manager"}).render();
     console.log(logoMessage);
+
 
     inquirer.prompt([
       {
@@ -57,9 +58,39 @@ function init (){
         case "Add Departmet":
             addDepartment();
             break;
-        //no default
+        // default:
+        //     quit();
         }
+    
     })
+    
 
+    function viewEmployees(){
+        //table showing: employee ids, first names, last names, job titles, departments, salaries, and managers
+        db.selectEmployeeTable()
+        .then(([rows]) =>{
+            let employees = rows;
+            console.table(employees);
+        })
+    }
+
+
+
+    function viewRoles(){
+
+    }
+
+
+
+    function viewDepartmets(){
+
+    }
+
+
+
+    function addDepartment(){
+
+
+    }
 }
 init();
