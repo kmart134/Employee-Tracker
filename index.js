@@ -1,5 +1,8 @@
 const inquirer = require("inquirer");
 const logo = require("asciiart-logo");
+// const config = require("./package.json");
+const db = require("./db");
+
 
 
 // ascciartlogo
@@ -7,6 +10,11 @@ const logo = require("asciiart-logo");
 
 //begin function with inquire prompts
 function init (){
+
+    //make consolse banner with asciiart
+    const logoMessage = logo({name: "Employee Manager"}).render();
+    console.log(logoMessage);
+
     inquirer.prompt([
       {
         type:"list",
