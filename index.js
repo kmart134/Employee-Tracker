@@ -37,7 +37,7 @@ function init (){
 
     .then((choice) => {
         switch(choice.initialChoice) {
-        case "View all Employeesr":
+        case "View all Employees":
             viewEmployees();
             break;
         case "Add Employee":
