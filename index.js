@@ -87,7 +87,12 @@ function initialPrompts (){
 
 
     function viewDepartmets(){
-        //
+        //table showing: department names and department ids
+        db.getDepartmentTable()
+        .then(([rows]) =>{
+            let department = rows;
+            console.table(role);
+        })
 
     }
 
