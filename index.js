@@ -4,10 +4,6 @@ const db = require("./db");
 const cTable = require("console.table");
 
 
-
-// ascciartlogo
-
-
 //begin function with inquire prompts
 function init (){
 
@@ -15,7 +11,9 @@ function init (){
     const logoMessage = logo({name: "Employee Manager"}).render();
     console.log(logoMessage);
 
+    initialPrompts();
 
+function initialPrompts (){
     inquirer.prompt([
       {
         type:"list",
@@ -40,17 +38,8 @@ function init (){
         case "View all Employees":
             viewEmployees();
             break;
-        case "Add Employee":
-            addEmployee();
-            break;
-        case "Update Employee Role":
-            updateEmployeeRole();
-            break;
         case "View all Roles":
             viewRoles();
-            break;
-        case "Add Role":
-            addRole();
             break;
         case "View all Departments":
             viewDepartmets();
@@ -58,31 +47,47 @@ function init (){
         case "Add Departmet":
             addDepartment();
             break;
+        case "Add a Role":
+            addRole();
+            break;
+        case "Add an Employee":
+            addEmployee();
+            break;
+        case "Update Employee Role":
+            updateEmployeeRole();
+            break;
         // default:
         //     quit();
         }
     
     })
-    
+    };
 
     function viewEmployees(){
         //table showing: employee ids, first names, last names, job titles, departments, salaries, and managers
-        db.selectEmployeeTable()
+        db.getEmployeeTable()
         .then(([rows]) =>{
             let employees = rows;
             console.table(employees);
         })
+        .then(() => initialPrompts());
     }
 
 
 
     function viewRoles(){
-
+        //table showing:job title, role id, the department that role belongs to, and the salary
+        db.getRoleTable()
+        .then(([rows]) => {
+            let role = rows;
+            console.table(role);
+        })
     }
 
 
 
     function viewDepartmets(){
+        //
 
     }
 
@@ -93,4 +98,5 @@ function init (){
 
     }
 }
+
 init();
