@@ -20,6 +20,12 @@ getRoleTable() {
     )
 };
 
+addDepartmentName() {
+    //departement from OG Index.js is added 
+    return this.connection.promise().query(
+    "INSERT INTO department"  
+    )
+};
 
 
 

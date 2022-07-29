@@ -99,9 +99,28 @@ function initialPrompts (){
 
 
     function addDepartment(){
+        //prompt to enter name of departemnt
+        //departemnet is added to database
+        inquirer.prompt([
+            {
+              type:"input",
+              name:"departmentInput",
+              message:"What department would you like to add?"}  
+          ])
 
-
+    .then((answer) => {
+        const deptName= answer;
+        console.log(answer);
+        db.addDepartmentName(answer)
+        .then (([rows]) =>{
+            let departmentName = rows;
+            console.table(role);
+        })
+    })
     }
+
+
+
 }
 
 init();
