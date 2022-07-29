@@ -69,7 +69,7 @@ function initialPrompts (){
         const query = "SELECT employee.id, employee.first_name, employee.last_name FROM employee"
         // , role.title, role.department_id, role.salary" 
        connection.query(query, (err, results) => {
-        if(err){
+        if(results){
             console.table(results);
             console.log(err);
             return initialPrompts();
