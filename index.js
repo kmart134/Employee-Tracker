@@ -3,6 +3,7 @@ const logo = require("asciiart-logo");
 const db = require("./db");
 const Database = require("./db/index");
 const cTable = require("console.table");
+const connection = require("./db/connection");
 
 
 //begin function with inquire prompts
@@ -65,23 +66,40 @@ function initialPrompts (){
     };
 
     function viewEmployees(){
+        const query = "SELECT employee.id, employee.first_name, employee.last_name, role.title, role.department_id, role.salary" 
+       connection.query(query, (err, results) => {
+        if(err){
+            console.table(results);
+            console.log(err);
+            return initialPrompts();
+        }
+
+        //use data here
+       })
         //table showing: employee ids, first names, last names, job titles, departments, salaries, and managers
-        Database.getEmployeeTable()
-        .then(([rows]) =>{
-            let employees = rows;
-            console.table(employees);
-        })
-        .then(() => initialPrompts());
+        // Database.getEmployeeTable()
+        // .then(([rows]) =>{
+        //     let employees = rows;
+        //     console.table(employees);
+        // })
+        // .then(() => initialPrompts());
     }
 
 
 
     function viewRoles(){
+        const query = "SELECT role.title, role.id, role.department_id, role.salary" 
+       connection.query(query, (err, results) => {
+        if(err){
+            console.table(results);
+            console.log(err);
+            return initialPrompts();
+        }
         //table showing:job title, role id, the department that role belongs to, and the salary
-        Database.getRoleTable()
-        .then(([rows]) => {
-            let role = rows;
-            console.table(role);
+    //     Database.getRoleTable()
+    //     .then(([rows]) => {
+    //         let role = rows;
+    //         console.table(role);
         })
     }
 
