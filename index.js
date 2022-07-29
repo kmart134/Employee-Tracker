@@ -66,7 +66,8 @@ function initialPrompts (){
     };
 
     function viewEmployees(){
-        const query = "SELECT employee.id, employee.first_name, employee.last_name, role.title, role.department_id, role.salary" 
+        const query = "SELECT employee.id, employee.first_name, employee.last_name FROM employee"
+        // , role.title, role.department_id, role.salary" 
        connection.query(query, (err, results) => {
         if(err){
             console.table(results);
@@ -88,7 +89,7 @@ function initialPrompts (){
 
 
     function viewRoles(){
-        const query = "SELECT role.title, role.id, role.department_id, role.salary" 
+        const query = "SELECT role.title, role.id, role.department_id, role.salary FROM role" 
        connection.query(query, (err, results) => {
         if(err){
             console.table(results);
