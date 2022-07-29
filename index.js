@@ -85,8 +85,6 @@ function initialPrompts (){
         })
     }
 
-
-
     function viewDepartmets(){
         //table showing: department names and department ids
         Database.getDepartmentTable()
@@ -96,8 +94,6 @@ function initialPrompts (){
         })
 
     }
-
-
 
     function addDepartment(){
         //prompt to enter name of departemnt
@@ -117,6 +113,33 @@ function initialPrompts (){
             console.table(department);
         })
     })
+    }
+
+    function addRole(){
+        //prompt to add the name, salary and department 
+        //role is added tp database
+
+        inquirer.prompt([
+            { type:"input",
+              name:"employeeName",
+              message:"What is the name of your employee?"},
+            { type:"input",
+              name:"employeeSalary",
+              message:"What salary does your employee receive?"},
+            { type:"input",
+              name:"employeeDep",
+              message:"What Departement is your employee at?"}  
+          ]) 
+
+    .then((answer) => {
+         console.log(answer.employeeName, answer.employeeSalary, answer.employeeDep);
+        Database.addRoleInput(answer.employeeName)
+        .then (([rows]) =>{
+            let employeeName = rows;
+            console.table(role);
+            })
+        })     
+        
     }
 
 

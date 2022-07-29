@@ -1,6 +1,7 @@
 // const { query } = require("./connection");
 const connection = require("./connection");
 
+
 class Database {
     constructor(connection){
         this.connection = connection;
@@ -31,5 +32,6 @@ addDepartmentName() {
 
 
 }
-
-module.exports = Database;
+const db = new Database(connection);
+module.exports = db;
+// module.exports = Database;
