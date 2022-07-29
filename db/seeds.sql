@@ -1,4 +1,7 @@
 USE tracker_db;
+
+
+
 INSERT INTO department (name)
 VALUES ("Art"), 
        ("Dance"), 
@@ -15,10 +18,10 @@ VALUES ("manager", 4000, 1),
        ("painter", 7000, 5),
        ("potter", 9000, 6);
 
-IINSERT INTO employee (first_name, last_name, role_id)
-VALUES ("Karen", "Martinez", 8),
-       ("Kiara", "Montero", 10),
-       ("Maria", "Castillo", 11);
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ("Karen", "Martinez", 5),
+       ("Kiara", "Montero", 2),
+       ("Maria", "Castillo", 1);
         
 INSERT INTO employee (manager_id)
 VALUES(1),
