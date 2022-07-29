@@ -1,1 +1,0 @@
---should I have queries in here or in db/index.js?

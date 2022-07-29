@@ -31,3 +31,5 @@ addDepartmentName() {
 
 
 }
+
+module.exports = Database;
