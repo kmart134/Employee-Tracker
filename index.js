@@ -110,12 +110,11 @@ function initialPrompts (){
           ])
 
     .then((answer) => {
-        const deptName= answer;
         console.log(answer);
         Database.addDepartmentName(answer)
         .then (([rows]) =>{
             let departmentName = rows;
-            console.table(role);
+            console.table(department);
         })
     })
     }

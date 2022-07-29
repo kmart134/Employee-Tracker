@@ -1,4 +1,4 @@
-const { query } = require("./connection");
+// const { query } = require("./connection");
 const connection = require("./connection");
 
 class Database {
