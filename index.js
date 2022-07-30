@@ -105,53 +105,53 @@ function initialPrompts (){
 
     function addDepartment(){
         //prompt to enter name of departemnt
-        //departemnet is added to database
         inquirer.prompt([
             {
-              type:"input",
-              name:"departmentInput",
-              message:"What department would you like to add?"}  
-          ])
-
-    .then((answer) => {
+                type:"input",
+                name:"departmentInput",
+                message:"What department would you like to add?"}  
+            ])
+            
+    //departemnet is added to database
+    .then(function tableTable(answer) {
         console.log(answer);
-        Database.addDepartmentName(answer)
-        .then (([rows]) =>{
-            let departmentName = rows;
-            console.table(department);
+        const query = "INSERT INTO department SET?"
+        connection.query(query, {
+            name:answer.departmentInput
+        }, function(error){
+            if (error) throw error;
+            console.log("check:department added");
         })
-    })
-    }
+        initialPrompts();
+        })
+    };
+    
 
     function addRole(){
-        //prompt to add the name, salary and department 
-        //role is added tp database
-
+        //prompt to enter name of role
         inquirer.prompt([
-            { type:"input",
-              name:"employeeName",
-              message:"What is the name of your employee?"},
-            { type:"input",
-              name:"employeeSalary",
-              message:"What salary does your employee receive?"},
-            { type:"input",
-              name:"employeeDep",
-              message:"What Departement is your employee at?"}  
-          ]) 
-
-    .then((answer) => {
-         console.log(answer.employeeName, answer.employeeSalary, answer.employeeDep);
-        Database.addRoleInput(answer.employeeName)
-        .then (([rows]) =>{
-            let employeeName = rows;
-            console.table(role);
-            })
-        })     
-        
+            {
+                type:"input",
+                name:"roleInput",
+                message:"What role would you like to add?"}  
+            ])
+            
+    //role is added to database
+    .then(function tableTwoTable(answer) {
+        console.log(answer);
+        const query = "INSERT INTO role SET?"
+        connection.query(query, {
+            name:answer.roleInput
+        }, function(error){
+            if (error) throw error;
+            console.log("check:role added");
+        })
+        initialPrompts();
+        })
     }
 
 
 
-}
+};
 
 init();
