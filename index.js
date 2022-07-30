@@ -74,45 +74,34 @@ function initialPrompts (){
             console.log(err);
             return initialPrompts();
         }
-
-        //use data here
        })
-        //table showing: employee ids, first names, last names, job titles, departments, salaries, and managers
-        // Database.getEmployeeTable()
-        // .then(([rows]) =>{
-        //     let employees = rows;
-        //     console.table(employees);
-        // })
-        // .then(() => initialPrompts());
-    }
-
+    };
 
 
     function viewRoles(){
         const query = "SELECT role.title, role.id, role.department_id, role.salary FROM role" 
-       connection.query(query, (err, results) => {
-        if(err){
-            console.table(results);
-            console.log(err);
-            return initialPrompts();
+        connection.query(query, (err, results) => {
+            if(results){
+                console.table(results);
+                console.log(err);
+                return initialPrompts();
         }
-        //table showing:job title, role id, the department that role belongs to, and the salary
-    //     Database.getRoleTable()
-    //     .then(([rows]) => {
-    //         let role = rows;
-    //         console.table(role);
         })
-    }
+    };
+
+
 
     function viewDepartmets(){
-        //table showing: department names and department ids
-        Database.getDepartmentTable()
-        .then(([rows]) =>{
-            let department = rows;
-            console.table(role);
+        const query = "SELECT role.title, role.id, role.department_id, role.salary FROM role" 
+        connection.query(query, (err, results) => {
+            if(results){
+                console.table(results);
+                console.log(err);
+                return initialPrompts();
+        }
         })
-
-    }
+    };
+    
 
     function addDepartment(){
         //prompt to enter name of departemnt
