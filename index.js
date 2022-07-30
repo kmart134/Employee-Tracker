@@ -92,7 +92,7 @@ function initialPrompts (){
 
 
     function viewDepartmets(){
-        const query = "SELECT role.title, role.id, role.department_id, role.salary FROM role" 
+        const query = "SELECT department.name, department.id FROM department" 
         connection.query(query, (err, results) => {
             if(results){
                 console.table(results);
@@ -101,7 +101,7 @@ function initialPrompts (){
         }
         })
     };
-    
+
 
     function addDepartment(){
         //prompt to enter name of departemnt
