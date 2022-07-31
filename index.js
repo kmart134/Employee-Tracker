@@ -128,7 +128,7 @@ function initialPrompts (){
 
    
     var deptArr = [];
-    function selectDepartment() {
+    function pickDepartment() {
         connection.query("SELECT * FROM department", function(err, res) {
           if (err) throw err
           for (var i = 0; i < res.length; i++) {
@@ -153,14 +153,14 @@ function initialPrompts (){
                 {
                     name: "department",
                     type: "rawlist",
-                    message: "Under which department does this new role fall?",
-                    choices: selectDepartment()
+                    message: "which of the following does this role fall into?",
+                    choices: pickDepartment()
                   },
             ])
             
     //role is added to database
     .then(function(answers) {
-        var deptId = selectDepartment().indexOf(answers.choice) + 1
+        var deptId = pickDepartment().indexOf(answers.choice) + 1
         connection.query(
             "INSERT INTO role SET ?",
             {
