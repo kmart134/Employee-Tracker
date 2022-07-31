@@ -49,7 +49,7 @@ function initialPrompts (){
         case "Add Departmet":
             addDepartment();
             break;
-        case "Add a Role":
+        case "Add Role":
             addRole();
             break;
         case "Add an Employee":
@@ -132,8 +132,16 @@ function initialPrompts (){
         inquirer.prompt([
             {
                 type:"input",
-                name:"roleInput",
-                message:"What role would you like to add?"}  
+                name:"title",
+                message:"What role would you like to add?"},
+            {
+                type:"input",
+                name:"salary",
+                message:"What is the salary for this new role?"},
+            {
+                type:"input",
+                name:"department",
+                message:"What is the department id for this new role?"},
             ])
             
     //role is added to database
@@ -141,7 +149,10 @@ function initialPrompts (){
         console.log(answer);
         const query = "INSERT INTO role SET?"
         connection.query(query, {
-            name:answer.roleInput
+            title:answer.title,
+            salary:answer.salary,
+            department:answer.department
+
         }, function(error){
             if (error) throw error;
             console.log("check:role added");
