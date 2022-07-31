@@ -30,4 +30,3 @@ CREATE TABLE employee (
   ON DELETE SET NULL
 );
 
--- am I supposed to have a table called manager?
