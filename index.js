@@ -125,7 +125,19 @@ function initialPrompts (){
         initialPrompts();
         })
     };
-    
+
+   
+    var deptArr = [];
+    function selectDepartment() {
+        connection.query("SELECT * FROM department", function(err, res) {
+          if (err) throw err
+          for (var i = 0; i < res.length; i++) {
+            deptArr.push(res[i].name);
+          }
+      })
+      return deptArr;
+      };
+
 
     function addRole(){
         //prompt to enter name of role
@@ -138,29 +150,32 @@ function initialPrompts (){
                 type:"input",
                 name:"salary",
                 message:"What is the salary for this new role?"},
-            {
-                type:"input",
-                name:"department",
-                message:"What is the department id for this new role?"},
+                {
+                    name: "department",
+                    type: "rawlist",
+                    message: "Under which department does this new role fall?",
+                    choices: selectDepartment()
+                  },
             ])
             
     //role is added to database
-    .then(function tableTwoTable(answer) {
-        console.log(answer);
-        const query = "INSERT INTO role SET?"
-        connection.query(query, {
-            title:answer.title,
-            salary:answer.salary,
-            department:answer.department
-
-        }, function(error){
-            if (error) throw error;
-            console.log("check:role added");
+    .then(function(answers) {
+        var deptId = selectDepartment().indexOf(answers.choice) + 1
+        connection.query(
+            "INSERT INTO role SET ?",
+            {
+              title: answers.title,
+              salary: answers.salary,
+              department_id: deptId
+            },
+            function(err) {
+                if (err) throw err
+                console.table(answers);
+                viewRoles();
         })
         initialPrompts();
         })
     }
-
 
 
 };
