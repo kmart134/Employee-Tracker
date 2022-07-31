@@ -3,14 +3,11 @@
 ## About the Project
 Hello, this Node.js command-line application prompts you with a couple options to view inforation on the departemnets, and employees. You can go though the options and view employee roles, salaries, ids, departments.etc
 
-image
+![image](./Employee%20Tracker%20Screenshot.png)
 
-link
+
 
 ## Built with:
--HTML
-
--CSS
 
 -JavaScript
 

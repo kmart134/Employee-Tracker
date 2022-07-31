@@ -150,13 +150,13 @@ function initialPrompts (){
                 type:"input",
                 name:"salary",
                 message:"What is the salary for this new role?"},
-                {
-                    name: "department",
-                    type: "rawlist",
-                    message: "which of the following does this role fall into?",
-                    choices: pickDepartment()
-                  },
-            ])
+            {
+                name: "department",
+                type: "rawlist",
+                message: "which of the following does this role fall into?",
+                choices: pickDepartment()
+            },
+        ])
             
     //role is added to database
     .then(function(answers) {
