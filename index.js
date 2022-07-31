@@ -160,7 +160,7 @@ function initialPrompts (){
             
     //role is added to database
     .then(function(answers) {
-        var deptId = pickDepartment().indexOf(answers.choice) + 1
+        var deptId = pickDepartment().indexOf(answers.department) + 1
         connection.query(
             "INSERT INTO role SET ?",
             {
@@ -173,7 +173,7 @@ function initialPrompts (){
                 console.table(answers);
                 viewRoles();
         })
-        initialPrompts();
+        // initialPrompts();
         })
     }
 
