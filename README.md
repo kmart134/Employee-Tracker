@@ -5,6 +5,8 @@ Hello, this Node.js command-line application prompts you with a couple options t
 
 ![image](./Employee%20Tracker%20Screenshot.png)
 
+https://drive.google.com/file/d/1rCxhVgrr4bJWSMRKt7PAbe-dXcjFZYUg/view
+
 
 
 ## Built with:
